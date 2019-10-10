@@ -1,0 +1,83 @@
+{
+  "elements": [
+    {"type": "ExpansionPanel", "caption": "Outdoor climate",
+      "items": [
+        {"type": "SelectVariable", "name": "TempOutdoor", "caption": "Temperature:" },
+        {"type": "SelectVariable", "name": "HumyOutdoor", "caption": "Humidity:" },
+	{"type": "SelectVariable", "name": "DewPointOutdoor", "caption": "Dew Point:" },
+        {"type": "SelectVariable", "name": "WaterContentOutdoor", "caption": "Water Content:" }
+      ]
+    },
+	
+    {"type": "ExpansionPanel", "caption": "Indoor climate",
+      "items": [
+        {"type": "SelectVariable", "name": "TempIndoor", "caption": "Temperature:" },
+        {"type": "SelectVariable", "name": "HumyIndoor", "caption": "Humidity:" },
+	{"type": "Select", "name": "TempDiffWallIndoor", "caption": "Temperature difference wall to air:",
+          "options": [
+            {"label": "0,0 °C", "value": 0.0 },  
+            {"label": "1,0 °C", "value": 1.0 },
+	    {"label": "1,5 °C", "value": 1.5 },
+            {"label": "2,0 °C", "value": 2.0 },
+	    {"label": "2,5 °C", "value": 2.5 },
+            {"label": "3,0 °C", "value": 3.0 },
+            {"label": "3,5 °C", "value": 3.5 },
+            {"label": "4,0 °C", "value": 4.0 },
+            {"label": "4,5 °C", "value": 4.5 },
+	    {"label": "5,0 °C", "value": 5.0 }  
+          ]
+        },
+	{"type": "CheckBox", "name": "CreateDewPoint", "caption": "Create variables for indoor dewpoint?" },
+        {"type": "CheckBox", "name": "CreateWaterContent", "caption": "Create variables for indoor water content?" }
+      ]
+    }, 
+	  
+    {"type": "ExpansionPanel", "caption": "Ventilate",
+      "items": [
+        {"type": "SelectVariable", "name": "WindowValue", "caption": "Window:" },
+	{"type": "CheckBox", "name": "CreateAir", "caption": "Create variable ventilate?" },
+	{"type": "Select", "name": "DiffLimit", "caption": "Limit difference for state ventilate:",
+          "options": [
+            {"label": "1 %", "value": 1 },  
+            {"label": "2 %", "value": 2 },
+	    {"label": "3 %", "value": 3 },
+            {"label": "4 %", "value": 4 },
+	    {"label": "5 %", "value": 5 },
+            {"label": "6 %", "value": 6 },
+            {"label": "7 %", "value": 7 },
+            {"label": "8 %", "value": 8 },
+            {"label": "9 %", "value": 9 },
+	    {"label": "10 %", "value": 10 }  
+          ]
+        }
+      ]
+    },
+	  
+    {"type": "ExpansionPanel", "caption": "Advanced settings",
+      "items": [
+        {"type": "Select", "name": "UpdateTimer", "caption": "Update Timer:",
+          "options": [
+            {"label": "Off", "value": 0 },  
+	    {"label": "1 min", "value": 1 },
+	    {"label": "2 min", "value": 2 },
+	    {"label": "3 min", "value": 3 },
+            {"label": "5 min", "value": 5 },
+	    {"label": "10 min", "value": 10 },
+            {"label": "15 min", "value": 15 },
+            {"label": "30 min", "value": 30 },
+            {"label": "60 min", "value": 60 },
+            {"label": "120 min", "value": 120 }
+          ]
+        },
+	{"type": "CheckBox", "name": "CreateTF70", "caption": "Create variable TF-70?" },
+	{"type": "CheckBox", "name": "CreateTF80", "caption": "Create variable TF-80?" },
+	{"type": "CheckBox", "name": "CreateAWValue", "caption": "Create variable AW-Value?" },      
+	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" }    
+      ]
+    }
+  ],
+  "actions": [
+    {"type": "Label", "caption": "Calculate values!" },
+    {"type": "Button", "caption": "BERECHNEN", "onClick": "SCHB_Update($id);" }
+  ]
+}

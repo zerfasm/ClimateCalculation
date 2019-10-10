@@ -1,0 +1,32 @@
+{
+  "translations": {
+    "de": {
+        "Outdoor climate": "Außenklima",
+        "Indoor climate": "Innenklima",
+        "Temperature:": "Temperatur:",
+	"Temperature difference wall to air:": "Temperaturdiffernz Wand zur Umgebungsluft:",
+	"Humidity:": "Luftfeuchtigkeit:",   
+	"Dew Point:": "Taupunkt:",    
+        "Water Content:": "Wassergehalt:",
+        "Off": "Nie", 
+	"Ventilate": "Lüften",
+        "Window:": "Fenster:", 
+	"Gefahr": "Danger",
+	"Keine Gefahr": "No Danger",   
+	"Schimmel": "Mould",     
+	"Limit difference for state ventilate:": "Limit Differenz für Status gelüftet:",  
+        "Advanced settings": "Erweiterte Einstellungen",
+        "Update Timer:": "Aktualisierungszeit:",
+	"Update Timer Air:": "Lüftungszeit:",    
+        "Create variables for indoor dewpoint?": "Soll die Variable für den Taupunkt der Luft angelegt werden?",
+        "Create variables for indoor water content?": "Soll die Variable für den Wassergehalt der Luft angelegt werden?",
+	"Create variable TF-70?": "Soll die Variable TF-70 angelegt werden?",    
+	"Create variable TF-80?": "Soll die Variable TF-80 angelegt werden?",  
+	"Create variable mould?": "Soll die Variable Schimmelgefahr angelegt werden?",  
+	"Create variable AW-Value?": "Soll die Variable AW-Wert angelegt werden?",  
+	"Create variable ventilate?": "Soll die Variable Gelüftet angelegt werden?",     
+        "Calculate values!": "Werte berechnen!",
+        "CALCULATE": "BERECHNEN"
+    }
+  }
+}
