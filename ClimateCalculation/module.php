@@ -313,14 +313,12 @@ class ClimateCalculation extends IPSModule
         $wv = $this->ReadPropertyInteger('WindowValue');
         $dl = $this->ReadPropertyInteger('DiffLimit');
         
-        if (($wv == false) and ($difference <= $dl)){
+        if (($wv == true) and ($difference <= $dl)){
             $update = $this->ReadPropertyBoolean('CreateAir');
             if ($update == true) {
             $this->SetValue('Ventilate', 1);
             } 
-        } else if (($wv == true) and ($difference > $dl)){
-            $this->SetValue('Ventilate', 0); 
-            }
+        } 
       }
 
     /**
