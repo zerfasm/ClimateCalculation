@@ -76,11 +76,11 @@
     
     	{"type": "Select", "name": "ResetTimer", "caption": "Reset Timer:",
           "options": [
-            	{"label": "00:00 Uhr", "value": 00:00 },  
-		{"label": "01:00 Uhr", "value": 01:00 },
-		{"label": "02:00 Uhr", "value": 02:00 },
-		{"label": "03:00 Uhr", "value": 03:00 },
-            	{"label": "15:30 Uhr", "value": 15:30 },
+            	{"label": "00:00 Uhr", "value": "00:00" },  
+		{"label": "01:00 Uhr", "value": "01:00" },
+		{"label": "02:00 Uhr", "value": "02:00" },
+		{"label": "03:00 Uhr", "value": "03:00" },
+            	{"label": "15:30 Uhr", "value": "15:30" },
           ]
     	}
       ]
