@@ -72,17 +72,7 @@
 	{"type": "CheckBox", "name": "CreateTF70", "caption": "Create variable TF-70?" },
 	{"type": "CheckBox", "name": "CreateTF80", "caption": "Create variable TF-80?" },
 	{"type": "CheckBox", "name": "CreateAWValue", "caption": "Create variable AW-Value?" },      
-	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" },
-    
-    	{"type": "Select", "name": "ResetTimer", "caption": "Reset Timer:",
-          "options": [
-            	{"label": "00:00 Uhr", "value": "00:00" },  
-		{"label": "01:00 Uhr", "value": "01:00" },
-		{"label": "02:00 Uhr", "value": "02:00" },
-		{"label": "03:00 Uhr", "value": "03:00" },
-            	{"label": "15:30 Uhr", "value": "15:30" },
-          ]
-    	}
+	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" }
       ]
     }
   ],
