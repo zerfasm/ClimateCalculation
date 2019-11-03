@@ -314,7 +314,7 @@ class ClimateCalculation extends IPSModule
         }
         
         // Gelüftet
-        $wv = $this->ReadPropertyInteger('WindowValue');
+        $wv = GetValue($this->ReadPropertyInteger('WindowValue'));
         $dl = $this->ReadPropertyInteger('DiffLimit');
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
