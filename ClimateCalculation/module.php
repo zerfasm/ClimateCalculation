@@ -29,6 +29,7 @@ class ClimateCalculation extends IPSModule
         $this->RegisterPropertyInteger('DiffLimit', 5);
         $this->RegisterPropertyBoolean('TTSAlexa', false);
         $this->RegisterPropertyString('AlexaID', "");
+	$this->RegisterPropertyString('AlexaVolume', "");
         $this->RegisterPropertyString('NameRoom', "");
         
         // Settings
@@ -318,9 +319,7 @@ class ClimateCalculation extends IPSModule
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
         $AID = $this->ReadPropertyString('AlexaID');   
-                            
-	//EchoRemote_SetVolume($AID, 40);
-	//EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");  
+        $AV = $this->ReadPropertyString('AlexaID'); 
 	    
         if (($wv == true) and ($difference <= $dl)){
             $update = $this->ReadPropertyBoolean('CreateAir');
@@ -329,7 +328,7 @@ class ClimateCalculation extends IPSModule
 		
 		//TTS Alexa Echo Remote Modul   
                 if ($tts == true){
-                    EchoRemote_SetVolume($AID, 40);
+                    EchoRemote_SetVolume($AID, $AV);
 		    EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
                 }
             } 
