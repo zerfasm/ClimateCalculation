@@ -36,6 +36,8 @@
       "items": [
         {"type": "SelectVariable", "name": "WindowValue", "caption": "Window:" },
 	{"type": "CheckBox", "name": "CreateAir", "caption": "Create variable ventilate?" },
+	{"type": "ValidationTextBox", "name": "Name", "caption": "Name Room:" },
+	{"type": "ValidationTextBox", "name": "AlexaID", "caption": "ID Alexa:" },      
 	{"type": "Select", "name": "DiffLimit", "caption": "Limit difference for state ventilate:",
           "options": [
             	{"label": "1 %", "value": 1 },  
