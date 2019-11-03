@@ -315,7 +315,7 @@ class ClimateCalculation extends IPSModule
         // Gelüftet
         $wv = $this->ReadPropertyInteger('WindowValue');
         $dl = $this->ReadPropertyInteger('DiffLimit');
-        $tts = $this->ReadPropertyInteger('TTSAlexa');
+        $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
         $AID = $this->ReadPropertyString('AlexaID');   
         
@@ -325,7 +325,7 @@ class ClimateCalculation extends IPSModule
                 $this->SetValue('Ventilate', 1);
                 if ($tts == true){
                     EchoRemote_SetVolume($AID, 40);
-			        EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
+		    EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
                 }
             } 
         } 
