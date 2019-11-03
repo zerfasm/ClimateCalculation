@@ -29,7 +29,7 @@ class ClimateCalculation extends IPSModule
         $this->RegisterPropertyInteger('DiffLimit', 5);
         $this->RegisterPropertyBoolean('TTSAlexa', false);
         $this->RegisterPropertyString('AlexaID', "");
-	$this->RegisterPropertyInteger('AlexaVolume', "");
+	$this->RegisterPropertyInteger('AlexaVolume', 40);
         $this->RegisterPropertyString('NameRoom', "");
         
         // Settings
