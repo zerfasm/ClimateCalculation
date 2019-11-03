@@ -36,7 +36,7 @@
       "items": [
         {"type": "SelectVariable", "name": "WindowValue", "caption": "Window:" },
 	{"type": "CheckBox", "name": "CreateAir", "caption": "Create variable ventilate?" },
-	{"type": "CheckBox", "name": "TTSAlexa", "caption": "Text to speak Alexa?" },
+	{"type": "CheckBox", "name": "TTSAlexa", "caption": "Use Text to speak?" },
 	{"type": "ValidationTextBox", "name": "Name", "caption": "Name Room:" },
 	{"type": "ValidationTextBox", "name": "AlexaID", "caption": "ID Alexa:" },      
 	{"type": "Select", "name": "DiffLimit", "caption": "Limit difference for state ventilate:",
