@@ -314,25 +314,32 @@ class ClimateCalculation extends IPSModule
         }
         
         // Gelüftet
-        $wv = GetValue($this->ReadPropertyInteger('WindowValue'));
         $dl = $this->ReadPropertyInteger('DiffLimit');
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
         $AID = $this->ReadPropertyString('AlexaID');   
         $AV = $this->ReadPropertyInteger('AlexaVolume'); 
-	    
-        if (($wv == true) and ($difference <= $dl)){
-            $update = $this->ReadPropertyBoolean('CreateAir');
-            if ($update == true) {
-                $this->SetValue('Ventilate', 1);
+	
+	$wv = $this->ReadPropertyInteger('WindowValue');
+	if ($wv != 0) {
+            	$wv = GetValue($wv);
+		
+		if (($wv == true) and ($difference <= $dl)){
+            	$update = $this->ReadPropertyBoolean('CreateAir');
+            	if ($update == true) {
+			$this->SetValue('Ventilate', 1);
 		
 		//TTS Alexa Echo Remote Modul   
                 if ($tts == true){
                     EchoRemote_SetVolume($AID, $AV);
 		    EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
-                }
-            } 
-        } 
+                	}
+		    } 
+        	} 
+	    } else {
+            $this->SendDebug('UPDATE', 'Window Contact not set!');
+            $state = false;
+        }
       }
 
     /**
