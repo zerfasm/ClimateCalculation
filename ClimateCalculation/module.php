@@ -374,25 +374,27 @@ class ClimateCalculation extends IPSModule
             			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			}
 		}
-		else
+		
+		$winopenID = $this->GetIDForIdent('WinOpen'); 
+		$winopen = GetValue($winopenID);
+		
+		else If (($wv == false) and ($winopen == 0))
 		{	
 			$update = $this->ReadPropertyBoolean('CreateWinClose');
             		if ($update == true) 
 			{
 				$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 
-				$winopenID = $this->GetIDForIdent('WinOpen'); 
-				$winopen = GetValue($winopenID);
+				//$winopenID = $this->GetIDForIdent('WinOpen'); 
+				//$winopen = GetValue($winopenID);
 
 				$wincloseID = $this->GetIDForIdent('WinClose'); 
 				$winclose = GetValue($wincloseID);
 
-				//$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
-				//$timewinopen = GetValue($timewinopenID);
-
 				$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
 				
 				$airtime = $this->ReadPropertyInteger('AirTime');
+				
 				If ($timewinopen >= $airtime)
 				{
 					// Status gelüftet setzen
