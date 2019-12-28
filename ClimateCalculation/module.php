@@ -136,7 +136,13 @@ class ClimateCalculation extends IPSModule
 	    
         //Gelüftet
         $create = $this->ReadPropertyBoolean('CreateAir');
-        $this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create); 
+        $this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create);
+	    
+    	// Trigger Fenster
+	If ($this->ReadPropertyInteger('WindowValue') > 0)
+	{
+		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $Instance, 0,"SCHB_Update(\$_IPS['TARGET']);");
+	};
     }
 
     /**
@@ -369,5 +375,28 @@ class ClimateCalculation extends IPSModule
     {
         IPS_SetProperty($this->InstanceID, 'UpdateTimer', $duration);
         IPS_ApplyChanges($this->InstanceID);
+    }
+	
+    private function RegisterTriggerWindow($Name, $Ident, $Typ, $Parent, $Position, $Skript)
+    {
+	$eid = @$this->GetIDForIdent($Ident);
+	if($eid === false) {
+		$eid = 0;
+	} elseif(IPS_GetEvent($eid)['EventType'] <> $Typ) {
+		IPS_DeleteEvent($eid);
+		$eid = 0;
+	}
+
+	//we need to create one
+	if ($eid == 0) {
+	    $EventID = IPS_CreateEvent($Typ);
+		IPS_SetEventTrigger($EventID, 1, $this->ReadPropertyInteger('WindowValue'));
+		IPS_SetParent($EventID, $Parent);
+		IPS_SetIdent($EventID, $Ident);
+		IPS_SetName($EventID, $Name);
+		IPS_SetPosition($EventID, $Position);
+		IPS_SetEventScript($EventID, $Skript); 
+		IPS_SetEventActive($EventID, true);  
+	}
     }
 }
