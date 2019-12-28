@@ -39,7 +39,7 @@
 	{"type": "CheckBox", "name": "CreateWinClose", "caption": "Create variable window close?" },
 	{"type": "CheckBox", "name": "CreateTimeWinOpen", "caption": "Create variable time window open?" },     
 	{"type": "CheckBox", "name": "CreateAir", "caption": "Create variable ventilate?" },
-	{"type": "ValidationTextBox", "name": "AirTimeID", "caption": "ID Air Time:" },       
+	{"type": "ValidationTextBox", "name": "AirTime", "caption": "Air Time [min]:" },       
 	{"type": "CheckBox", "name": "TTSAlexa", "caption": "Use TTS?" },
 	{"type": "ValidationTextBox", "name": "NameRoom", "caption": "Name Room:" },
 	{"type": "ValidationTextBox", "name": "AlexaID", "caption": "ID Alexa:" }, 
