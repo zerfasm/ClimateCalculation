@@ -40,6 +40,9 @@ class ClimateCalculation extends IPSModule
         $this->RegisterPropertyBoolean('CreateTF80', false);
         $this->RegisterPropertyBoolean('CreateAWValue', false);
         $this->RegisterPropertyBoolean('CreateMould', false);
+        $this->RegisterPropertyBoolean('CreateWinOpen', false);
+        $this->RegisterPropertyBoolean('CreateWinClose', false);	    
+	    
         
         // Update trigger
         $this->RegisterTimer('UpdateTrigger', 0, "SCHB_Update(\$_IPS['TARGET']);");
@@ -119,9 +122,17 @@ class ClimateCalculation extends IPSModule
         $create = $this->ReadPropertyBoolean('CreateMould');
         $this->MaintainVariable('Mould', 'Schimmelgefahr', vtInteger, 'SCHB.Schimmelgefahr', 11, $create); 
         
+	//Geöffnet um
+        $create = $this->ReadPropertyBoolean('CreateWinOpen');
+        $this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '', 12, $create); 
+	    
+	//Gelschlossen um
+        $create = $this->ReadPropertyBoolean('CreateWinClose');
+        $this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '', 13, $create);
+	    
         //Gelüftet
         $create = $this->ReadPropertyBoolean('CreateAir');
-        $this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 12, $create); 
+        $this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 14, $create); 
     }
 
     /**
