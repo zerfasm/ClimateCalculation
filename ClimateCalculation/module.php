@@ -343,13 +343,20 @@ class ClimateCalculation extends IPSModule
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
         $AID = $this->ReadPropertyString('AlexaID');   
-        $AV = $this->ReadPropertyInteger('AlexaVolume'); 
+        $AV = $this->ReadPropertyInteger('AlexaVolume');
+	$winopenID = $this->GetIDForIdent('WinOpen'); 
+	$winopen = GetValue($winopenID);
+	$wincloseID = $this->GetIDForIdent('WinClose'); 
+	$winclose = GetValue($wincloseID);
+	$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
+	//$timewinopen = GetValue($timewinopenID);
 	
 	$wv = $this->ReadPropertyInteger('WindowValue');
 	if ($wv != 0) 
 	{
             	$wv = GetValue($wv);
-		/*if (($wv == true) and ($difference <= $dl))
+		
+		if (($wv == true) and ($difference <= $dl))
 		{
 			// Status gelüftet setzen
             		$update = $this->ReadPropertyBoolean('CreateAir');
@@ -364,16 +371,7 @@ class ClimateCalculation extends IPSModule
 		    			EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
                 		}
 		    	} 
-        	}*/
-		$winopenID = $this->GetIDForIdent('WinOpen'); 
-		$winopen = GetValue($winopenID);
-
-		$wincloseID = $this->GetIDForIdent('WinClose'); 
-		$winclose = GetValue($wincloseID);
-		
-		$timewinopenID = $this->GetIDForIdent('TimeWinOpen'); 
-		//$timewinopen = GetValue($timewinopenID);
-		
+        	}
 		if ($wv == true)
 		{
 			 $update = $this->ReadPropertyBoolean('CreateWinOpen');
@@ -382,20 +380,15 @@ class ClimateCalculation extends IPSModule
             			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			}
 		}
-		
-		if (($wv == false) and ($winopen > 0))
+		elseif (($wv == false) and ($winopen > 0))
 		{	
 			$update = $this->ReadPropertyBoolean('CreateWinClose');
             		if ($update == true) 
 			{
 				$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
-
-				$result = ($winclose - $winopen)/60;
-				$timewinopen = SetValue($timewinopenID,$result);
-
-				$airtime = $this->ReadPropertyInteger('AirTime');
-
-				if ($timewinopen >= $airtime)
+				
+				$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
+				If ($timewinopen >= 15)
 				{
 					// Status gelüftet setzen
 					$update = $this->ReadPropertyBoolean('CreateAir');
@@ -403,16 +396,20 @@ class ClimateCalculation extends IPSModule
 					{
 						$this->SetValue('Ventilate', 1);
 					}
-
 					//TTS Alexa Echo Remote Modul   
 					if ($tts == true)
 					{
-						EchoRemote_SetVolume($AID, $AV);
-						EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+					EchoRemote_SetVolume($AID, $AV);
+					EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 					}
 				}
 			}
         	} 
+	} else 
+	{
+            $this->SendDebug('UPDATE', 'Window Contact not set!');
+            $state = false;
+        }
       }
 
     /**
