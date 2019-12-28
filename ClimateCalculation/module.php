@@ -126,7 +126,7 @@ class ClimateCalculation extends IPSModule
         $create = $this->ReadPropertyBoolean('CreateWinOpen');
         $this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '~UnixTimestamp', 12, $create); 
 	    
-	//Gelschlossen um
+	//Geschlossen um
         $create = $this->ReadPropertyBoolean('CreateWinClose');
         $this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '~UnixTimestamp', 13, $create);
 	    
@@ -342,22 +342,35 @@ class ClimateCalculation extends IPSModule
         $AV = $this->ReadPropertyInteger('AlexaVolume'); 
 	
 	$wv = $this->ReadPropertyInteger('WindowValue');
-	if ($wv != 0) {
+	if ($wv != 0) 
+	{
             	$wv = GetValue($wv);
+		if (($wv == true) and ($difference <= $dl))
+		{
+            		$update = $this->ReadPropertyBoolean('CreateAir');
+            		if ($update == true) 
+			{
+				$this->SetValue('Ventilate', 1);
 		
-		if (($wv == true) and ($difference <= $dl)){
-            	$update = $this->ReadPropertyBoolean('CreateAir');
-            	if ($update == true) {
-			$this->SetValue('Ventilate', 1);
+				//TTS Alexa Echo Remote Modul   
+                		if ($tts == true)
+				{
+                    			EchoRemote_SetVolume($AID, $AV);
+		    			EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
+                		}
+		    	} 
+        	}
 		
-		//TTS Alexa Echo Remote Modul   
-                if ($tts == true){
-                    EchoRemote_SetVolume($AID, $AV);
-		    EchoRemote_TextToSpeech($AID, "Lüften $nr benenden");   
-                	}
-		    } 
+		if ($wv == true)
+		{
+            		$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableUpdated"]);
+		}
+		else
+		{
+			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableUpdated"]);
         	} 
-	    } else {
+	} else 
+	{
             $this->SendDebug('UPDATE', 'Window Contact not set!');
             $state = false;
         }
