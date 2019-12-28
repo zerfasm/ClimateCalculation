@@ -347,6 +347,7 @@ class ClimateCalculation extends IPSModule
             	$wv = GetValue($wv);
 		if (($wv == true) and ($difference <= $dl))
 		{
+			// Status gelüftet setzen
             		$update = $this->ReadPropertyBoolean('CreateAir');
             		if ($update == true) 
 			{
@@ -377,14 +378,22 @@ class ClimateCalculation extends IPSModule
 			
 			$timeopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
 			
-			//TTS Alexa Echo Remote Modul   
-			if ($tts == true)
+			If ($timeopen >= 15)
 			{
-				If ($timeopen >= 15)
+				// Status gelüftet setzen
+				$update = $this->ReadPropertyBoolean('CreateAir');
+            			if ($update == true) 
+				{
+					$this->SetValue('Ventilate', 1);
+				}
+				
+				//TTS Alexa Echo Remote Modul   
+				if ($tts == true)
 				{
 				EchoRemote_SetVolume($AID, $AV);
 				EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 				}
+				
 			}
         	} 
 	} else 
