@@ -128,15 +128,15 @@ class ClimateCalculation extends IPSModule
         
 	//Geöffnet um
         $create = $this->ReadPropertyBoolean('CreateWinOpen');
-        $this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '', 12, $create); 
+        $this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '~UnixTimestamp', 12, $create); 
 	    
 	//Geschlossen um
         $create = $this->ReadPropertyBoolean('CreateWinClose');
-        $this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '', 13, $create);
+        $this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '~UnixTimestamp', 13, $create);
 	    
 	//Zeit Fenster Offen
         $create = $this->ReadPropertyBoolean('CreateTimeWinOpen');
-        $this->MaintainVariable('TimeWinOpen', 'Zeit Fenster geöffnet', vtInteger, '', 14, $create);    
+        $this->MaintainVariable('TimeWinOpen', 'Zeit Fenster geöffnet', vtInteger, 'time.min', 14, $create);    
 	    
         //Gelüftet
         $create = $this->ReadPropertyBoolean('CreateAir');
@@ -376,8 +376,6 @@ class ClimateCalculation extends IPSModule
 		}
 		else
 		{	
-			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
-			
 			$winopenID = $this->GetIDForIdent('WinOpen'); 
 			$winopen = GetValue($winopenID);
 			
@@ -387,23 +385,30 @@ class ClimateCalculation extends IPSModule
 			$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
 			$timewinopen = GetValue($timewinopenID);
 			
-			$timediff = ($winclose - $winopen);
-			SetValue($timewinopenID,$timediff);
+			If ($winopen > 0)
+			{	
+				$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 
-			If ($timewinopen >= 15)
-			{
-				// Status gelüftet setzen
-				$update = $this->ReadPropertyBoolean('CreateAir');
-				if ($update == true) 
+
+
+				$timediff = (($winclose - $winopen)/60);
+				SetValue($timewinopenID,$timediff);
+
+				If ($timewinopen >= 15)
 				{
-					$this->SetValue('Ventilate', 1);
-				}
-				
-				//TTS Alexa Echo Remote Modul   
-				if ($tts == true)
-				{
-				EchoRemote_SetVolume($AID, $AV);
-				EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+					// Status gelüftet setzen
+					$update = $this->ReadPropertyBoolean('CreateAir');
+					if ($update == true) 
+					{
+						$this->SetValue('Ventilate', 1);
+					}
+
+					//TTS Alexa Echo Remote Modul   
+					if ($tts == true)
+					{
+					EchoRemote_SetVolume($AID, $AV);
+					EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+					}
 				}
 			}
         	} 
