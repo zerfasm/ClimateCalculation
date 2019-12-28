@@ -367,39 +367,47 @@ class ClimateCalculation extends IPSModule
 		
 		if ($wv == true)
 		{
-            		$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableUpdated"]);
+			 $update = $this->ReadPropertyBoolean('CreateWinOpen');
+            		if ($update == true) 
+			{
+            			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
+			}
 		}
 		else
-		{		
-			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableUpdated"]);
-			
-			$winopenID = $this->GetIDForIdent('WinOpen'); 
-			$winopen = GetValue($winopenID);
-			
-			$wincloseID = $this->GetIDForIdent('WinClose'); 
-			$winclose = GetValue($wincloseID);
-			
-			$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
-			$timewinopen = GetValue($timewinopenID);
-			
-			$timeopen = $this->SetValue($timewinopenID,(($winclose - $winopen)/60));
-			
-			If ($timeopen >= 15)
+		{	
+			$update = $this->ReadPropertyBoolean('CreateWinClose');
+            		if ($update == true) 
 			{
-				// Status gelüftet setzen
-				$update = $this->ReadPropertyBoolean('CreateAir');
-            			if ($update == true) 
+				$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
+
+				$winopenID = $this->GetIDForIdent('WinOpen'); 
+				$winopen = GetValue($winopenID);
+
+				$wincloseID = $this->GetIDForIdent('WinClose'); 
+				$winclose = GetValue($wincloseID);
+
+				$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
+				$timewinopen = GetValue($timewinopenID);
+
+				$this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
+
+				If ($timeopen >= 15)
 				{
-					$this->SetValue('Ventilate', 1);
+					// Status gelüftet setzen
+					$update = $this->ReadPropertyBoolean('CreateAir');
+					if ($update == true) 
+					{
+						$this->SetValue('Ventilate', 1);
+					}
+
+					//TTS Alexa Echo Remote Modul   
+					if ($tts == true)
+					{
+					EchoRemote_SetVolume($AID, $AV);
+					EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+					}
+
 				}
-				
-				//TTS Alexa Echo Remote Modul   
-				if ($tts == true)
-				{
-				EchoRemote_SetVolume($AID, $AV);
-				EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
-				}
-				
 			}
         	} 
 	} else 
