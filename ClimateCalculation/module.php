@@ -136,7 +136,7 @@ class ClimateCalculation extends IPSModule
 	    
 	//Zeit Fenster Offen
         $create = $this->ReadPropertyBoolean('CreateTimeWinOpen');
-        $this->MaintainVariable('TimeWinOpen', 'Zeit Fenster geöffnet', vtInteger, '', 14, $create);    
+        $this->MaintainVariable('TimeWinOpen', 'Zeit Fenster geöffnet', vtInteger, 'time.min', 14, $create);    
 	    
         //Gelüftet
         $create = $this->ReadPropertyBoolean('CreateAir');
@@ -389,7 +389,7 @@ class ClimateCalculation extends IPSModule
 				$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
 				$timewinopen = GetValue($timewinopenID);
 
-				$timediff = ($winclose - $winopen);
+				$timediff = ($winclose - $winopen)/60;
 				SetValue($timewinopenID,$timediff);
 
 				/*If ($timewinopen >= 900)
