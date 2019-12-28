@@ -391,7 +391,7 @@ class ClimateCalculation extends IPSModule
 
 
 
-				$timediff = (($winclose - $winopen)/60);
+				$timediff = ($winclose - $winopen);
 				SetValue($timewinopenID,$timediff);
 
 				If ($timewinopen >= 15)
