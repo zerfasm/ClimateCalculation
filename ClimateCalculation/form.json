@@ -35,7 +35,10 @@
     {"type": "ExpansionPanel", "caption": "Ventilate",
       "items": [
         {"type": "SelectVariable", "name": "WindowValue", "caption": "Window:" },
-	{"type": "CheckBox", "name": "CreateAir", "caption": "Create variable ventilate?" },
+	{"type": "CheckBox", "name": "CreateWinOpen", "caption": "Create variable window open?" },
+	{"type": "CheckBox", "name": "CreateWinClose", "caption": "Create variable window close?" },
+	{"type": "CheckBox", "name": "CreateTimeWinOpen", "caption": "Create variable time window open?" },     
+	{"type": "CheckBox", "name": "CreateAir", "caption": "Create variable ventilate?" },   
 	{"type": "CheckBox", "name": "TTSAlexa", "caption": "Use TTS?" },
 	{"type": "ValidationTextBox", "name": "NameRoom", "caption": "Name Room:" },
 	{"type": "ValidationTextBox", "name": "AlexaID", "caption": "ID Alexa:" }, 
@@ -78,10 +81,7 @@
 	{"type": "CheckBox", "name": "CreateTF70", "caption": "Create variable TF-70?" },
 	{"type": "CheckBox", "name": "CreateTF80", "caption": "Create variable TF-80?" },
 	{"type": "CheckBox", "name": "CreateAWValue", "caption": "Create variable AW-Value?" },      
-	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" },
-	{"type": "CheckBox", "name": "CreateWinOpen", "caption": "Create variable window open?" },
-	{"type": "CheckBox", "name": "CreateWinClose", "caption": "Create variable window close?" },
-	{"type": "CheckBox", "name": "CreateTimeWinOpen", "caption": "Create variable time window open?" }      
+	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" } 
       ]
     }
   ],
