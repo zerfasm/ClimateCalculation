@@ -365,6 +365,8 @@ class ClimateCalculation extends IPSModule
                 		}
 		    	} 
         	}*/
+		$winopenID = $this->GetIDForIdent('WinOpen'); 
+		$winopen = GetValue($winopenID);
 		
 		if ($wv == true)
 		{
@@ -374,7 +376,7 @@ class ClimateCalculation extends IPSModule
             			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			}
 		}
-		elseif (($wv == false) and (GetValue($this->GetIDForIdent('WinOpen')) > 0))
+		elseif (($wv == false) and ($winopen > 0))
 		{	
 			$update = $this->ReadPropertyBoolean('CreateWinClose');
             		if ($update == true) 
