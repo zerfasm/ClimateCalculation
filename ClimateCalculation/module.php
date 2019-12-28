@@ -25,8 +25,13 @@ class ClimateCalculation extends IPSModule
         
          // Window variables
         $this->RegisterPropertyInteger('WindowValue', 0);
+	$this->RegisterPropertyBoolean('CreateWinOpen', false);
+        $this->RegisterPropertyBoolean('CreateWinClose', false);	    
+	$this->RegisterPropertyBoolean('CreateTimeWinOpen', false);   
         $this->RegisterPropertyBoolean('CreateAir', false);
         $this->RegisterPropertyInteger('DiffLimit', 5);
+	    
+	// Alexa variables   
         $this->RegisterPropertyBoolean('TTSAlexa', false);
         $this->RegisterPropertyString('AlexaID', "");
 	$this->RegisterPropertyInteger('AlexaVolume', 40);
@@ -40,9 +45,7 @@ class ClimateCalculation extends IPSModule
         $this->RegisterPropertyBoolean('CreateTF80', false);
         $this->RegisterPropertyBoolean('CreateAWValue', false);
         $this->RegisterPropertyBoolean('CreateMould', false);
-        $this->RegisterPropertyBoolean('CreateWinOpen', false);
-        $this->RegisterPropertyBoolean('CreateWinClose', false);	    
-	$this->RegisterPropertyBoolean('CreateTimeWinOpen', false);    
+ 
         
         // Update trigger
         $this->RegisterTimer('UpdateTrigger', 0, "SCHB_Update(\$_IPS['TARGET']);");
