@@ -374,7 +374,7 @@ class ClimateCalculation extends IPSModule
             			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			}
 		}
-		elseif (($wv == false) and (GetValue($this->GetIDForIdent('WinOpen')) == 0))
+		elseif (($wv == false) and (GetValue($this->GetIDForIdent('WinOpen')) > 0))
 		{	
 			$update = $this->ReadPropertyBoolean('CreateWinClose');
             		if ($update == true) 
