@@ -80,7 +80,8 @@
 	{"type": "CheckBox", "name": "CreateAWValue", "caption": "Create variable AW-Value?" },      
 	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" },
 	{"type": "CheckBox", "name": "CreateWinOpen", "caption": "Create variable window open?" },
-	{"type": "CheckBox", "name": "CreateWinClose", "caption": "Create variable window close?" }     
+	{"type": "CheckBox", "name": "CreateWinClose", "caption": "Create variable window close?" },
+	{"type": "CheckBox", "name": "CreateTimeWinOpen", "caption": "Create variable time window open?" }      
       ]
     }
   ],
