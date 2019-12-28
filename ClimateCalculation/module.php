@@ -29,6 +29,7 @@ class ClimateCalculation extends IPSModule
         $this->RegisterPropertyBoolean('CreateWinClose', false);	    
 	$this->RegisterPropertyBoolean('CreateTimeWinOpen', false);   
         $this->RegisterPropertyBoolean('CreateAir', false);
+	$this->RegisterPropertyInteger('AirTime', 15);
         $this->RegisterPropertyInteger('DiffLimit', 5);
 	    
 	// Alexa variables   
@@ -390,8 +391,9 @@ class ClimateCalculation extends IPSModule
 				//$timewinopen = GetValue($timewinopenID);
 
 				$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
-
-				If ($timewinopen >= 15)
+				
+				$airtime = $this->ReadPropertyInteger('AirTime');
+				If ($timewinopen >= $airtime)
 				{
 					// Status gelüftet setzen
 					$update = $this->ReadPropertyBoolean('CreateAir');
@@ -403,8 +405,8 @@ class ClimateCalculation extends IPSModule
 					//TTS Alexa Echo Remote Modul   
 					if ($tts == true)
 					{
-					EchoRemote_SetVolume($AID, $AV);
-					EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+						EchoRemote_SetVolume($AID, $AV);
+						EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 					}
 
 				}
