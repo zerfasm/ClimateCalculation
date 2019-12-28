@@ -386,12 +386,12 @@ class ClimateCalculation extends IPSModule
 				$wincloseID = $this->GetIDForIdent('WinClose'); 
 				$winclose = GetValue($wincloseID);
 
-				$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
-				$timewinopen = GetValue($timewinopenID);
+				//$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
+				//$timewinopen = GetValue($timewinopenID);
 
-				$this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
+				$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
 
-				If ($timeopen >= 15)
+				If ($timewinopen >= 15)
 				{
 					// Status gelüftet setzen
 					$update = $this->ReadPropertyBoolean('CreateAir');
