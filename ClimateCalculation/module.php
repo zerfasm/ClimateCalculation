@@ -381,12 +381,9 @@ class ClimateCalculation extends IPSModule
 			{
             			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			}
-			else 
-			{
-            		$this->SendDebug('UPDATE', 'Create Win Open not set!');
-            		$state = false;
-			}
-		elseif (($wv == false) and ($winopen > 0))
+		}
+		
+		if (($wv == false) and ($winopen > 0))
 		{	
 			$update = $this->ReadPropertyBoolean('CreateWinClose');
             		if ($update == true) 
@@ -398,7 +395,7 @@ class ClimateCalculation extends IPSModule
 
 				$airtime = $this->ReadPropertyInteger('AirTime');
 
-				If ($timewinopen >= $airtime)
+				if ($timewinopen >= $airtime)
 				{
 					// Status gelüftet setzen
 					$update = $this->ReadPropertyBoolean('CreateAir');
@@ -413,20 +410,9 @@ class ClimateCalculation extends IPSModule
 						EchoRemote_SetVolume($AID, $AV);
 						EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 					}
-
 				}
 			}
-			else 
-			{
-            		$this->SendDebug('UPDATE', 'Create Win Close not set!');
-            		$state = false;
-			}
         	} 
-	} else 
-	{
-            $this->SendDebug('UPDATE', 'Window Contact not set!');
-            $state = false;
-        }
       }
 
     /**
