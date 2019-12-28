@@ -373,7 +373,7 @@ class ClimateCalculation extends IPSModule
 		    	} 
         	}*/
 		
-		if ($wv == true)
+		if (($wv == true) or (($wv == true) and ($difference <= $dl)))
 		{
             		$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 		}
@@ -392,6 +392,7 @@ class ClimateCalculation extends IPSModule
 				{
 					$this->SetValue('Ventilate', 1);
 				}
+				
 				//TTS Alexa Echo Remote Modul   
 				if ($tts == true)
 				{
