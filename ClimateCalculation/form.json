@@ -4,7 +4,7 @@
       "items": [
         {"type": "SelectVariable", "name": "TempOutdoor", "caption": "Temperature:" },
         {"type": "SelectVariable", "name": "HumyOutdoor", "caption": "Humidity:" },
-		{"type": "SelectVariable", "name": "DewPointOutdoor", "caption": "Dew Point:" },
+	{"type": "SelectVariable", "name": "DewPointOutdoor", "caption": "Dew Point:" },
         {"type": "SelectVariable", "name": "WaterContentOutdoor", "caption": "Water Content:" }
       ]
     },
@@ -78,7 +78,9 @@
 	{"type": "CheckBox", "name": "CreateTF70", "caption": "Create variable TF-70?" },
 	{"type": "CheckBox", "name": "CreateTF80", "caption": "Create variable TF-80?" },
 	{"type": "CheckBox", "name": "CreateAWValue", "caption": "Create variable AW-Value?" },      
-	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" }
+	{"type": "CheckBox", "name": "CreateMould", "caption": "Create variable mould?" },
+	{"type": "CheckBox", "name": "CreateWinOpen", "caption": "Create variable window open?" },
+	{"type": "CheckBox", "name": "CreateWinClose", "caption": "Create variable window close?" }     
       ]
     }
   ],
