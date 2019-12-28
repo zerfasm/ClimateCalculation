@@ -374,39 +374,42 @@ class ClimateCalculation extends IPSModule
             			$this->SetValue('WinOpen', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			}
 		}
-		elseif (($wv == false) and (GetValue($this->GetIDForIdent('WinOpen')) == 0))
+		else
 		{	
 			$update = $this->ReadPropertyBoolean('CreateWinClose');
             		if ($update == true) 
 			{
-				$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
-
-				//$winopenID = $this->GetIDForIdent('WinOpen'); 
-				//$winopen = GetValue($winopenID);
-
-				$wincloseID = $this->GetIDForIdent('WinClose'); 
-				$winclose = GetValue($wincloseID);
-
-				$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
-				
-				$airtime = $this->ReadPropertyInteger('AirTime');
-				
-				If ($timewinopen >= $airtime)
+				If (($wv == false) and (GetValue($this->GetIDForIdent('WinOpen')) == 0))
 				{
-					// Status gelüftet setzen
-					$update = $this->ReadPropertyBoolean('CreateAir');
-					if ($update == true) 
-					{
-						$this->SetValue('Ventilate', 1);
-					}
+					$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 
-					//TTS Alexa Echo Remote Modul   
-					if ($tts == true)
-					{
-						EchoRemote_SetVolume($AID, $AV);
-						EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
-					}
+					//$winopenID = $this->GetIDForIdent('WinOpen'); 
+					//$winopen = GetValue($winopenID);
 
+					$wincloseID = $this->GetIDForIdent('WinClose'); 
+					$winclose = GetValue($wincloseID);
+
+					$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
+
+					$airtime = $this->ReadPropertyInteger('AirTime');
+
+					If ($timewinopen >= $airtime)
+					{
+						// Status gelüftet setzen
+						$update = $this->ReadPropertyBoolean('CreateAir');
+						if ($update == true) 
+						{
+							$this->SetValue('Ventilate', 1);
+						}
+
+						//TTS Alexa Echo Remote Modul   
+						if ($tts == true)
+						{
+							EchoRemote_SetVolume($AID, $AV);
+							EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+						}
+
+					}
 				}
 			}
         	} 
