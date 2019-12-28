@@ -368,7 +368,7 @@ class ClimateCalculation extends IPSModule
 		else
 		{
 			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableUpdated"]);
-			$timeopen = (GetValue('WinClose') - GetValue('WinOpen'));
+			$timeopen = (GetValue($this->ReadPropertyInteger('WinClose')) - GetValue($this->ReadPropertyInteger('WinOpen')));
 			$this->SetValue('TimeWinOpen',$timeopen);
 			
 			//TTS Alexa Echo Remote Modul   
