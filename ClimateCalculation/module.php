@@ -375,12 +375,12 @@ class ClimateCalculation extends IPSModule
 			$wincloseID = $this->GetIDForIdent('WinClose'); 
 			$winclose = GetValue($wincloseID);
 			
-			$timeopen = $this->SetValue('TimeWinOpen',($winclose - $winopen));
+			$timeopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
 			
 			//TTS Alexa Echo Remote Modul   
 			if ($tts == true)
 			{
-				If ($timeopen > 900 )
+				If ($timeopen >= 15)
 				{
 				EchoRemote_SetVolume($AID, $AV);
 				EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
