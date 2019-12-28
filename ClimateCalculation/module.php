@@ -376,6 +376,8 @@ class ClimateCalculation extends IPSModule
 		}
 		else
 		{	
+			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
+			
 			$winopenID = $this->GetIDForIdent('WinOpen'); 
 			$winopen = GetValue($winopenID);
 		
@@ -385,13 +387,10 @@ class ClimateCalculation extends IPSModule
 			$timewinopenID  = $this->GetIDForIdent('TimeWinOpen'); 
 			$timewinopen = GetValue($timewinopenID);
 
-			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
-
-
 			$timediff = ($winclose - $winopen);
 			SetValue($timewinopenID,$timediff);
 
-			If ($timewinopen >= 900)
+			/*If ($timewinopen >= 900)
 			{
 				// Status gelüftet setzen
 				$update = $this->ReadPropertyBoolean('CreateAir');
@@ -406,7 +405,7 @@ class ClimateCalculation extends IPSModule
 				EchoRemote_SetVolume($AID, $AV);
 				EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 				}
-			}
+			}*/
         	} 
 	} else 
 	{
