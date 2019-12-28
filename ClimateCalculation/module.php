@@ -381,8 +381,8 @@ class ClimateCalculation extends IPSModule
 		{	
 			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 
-			$calc = (($winclose - $winopen)/60);
-			$timewinopencalc = SetValue($timewinopenID,$result);
+			$timediff = (($winclose - $winopen)/60);
+			$this->SetValue(($timewinopenID,$timediff);
 
 			If ($timewinopen >= 15)
 			{
