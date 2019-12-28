@@ -141,7 +141,7 @@ class ClimateCalculation extends IPSModule
     	// Trigger Fenster
 	If ($this->ReadPropertyInteger('WindowValue') > 0)
 	{
-		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $Instance, 0,"SCHB_Update(\$_IPS['TARGET']);");
+		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"SCHB_Update(\$_IPS['TARGET']);");
 	};
     }
 
