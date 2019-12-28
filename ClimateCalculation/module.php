@@ -371,6 +371,9 @@ class ClimateCalculation extends IPSModule
 		$wincloseID = $this->GetIDForIdent('WinClose'); 
 		$winclose = GetValue($wincloseID);
 		
+		$timewinopenID = $this->GetIDForIdent('TimeWinOpen'); 
+		//$timewinopen = GetValue($timewinopenID);
+		
 		if ($wv == true)
 		{
 			 $update = $this->ReadPropertyBoolean('CreateWinOpen');
@@ -386,7 +389,8 @@ class ClimateCalculation extends IPSModule
 			{
 				$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 
-				$timewinopen = $this->SetValue('TimeWinOpen',(($winclose - $winopen)/60));
+				$result = ($winclose - $winopen)/60);
+				$timewinopen = SetValue($timewinopenID,$result);
 
 				$airtime = $this->ReadPropertyInteger('AirTime');
 
