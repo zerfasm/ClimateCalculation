@@ -127,13 +127,13 @@ class ClimateCalculation extends IPSModule
         $this->MaintainVariable('Mould', 'Schimmelgefahr', vtInteger, 'SCHB.Schimmelgefahr', 11, $create); 
         
 	//Geöffnet um
-	$this->RegisterVariableInteger('WinOpen', 'Fenster geöffnet','~UnixTimestamp',12);
+	$this->RegisterVariableInteger('WinOpen', 'Fenster geöffnet','',12);
 	    
 	//Geschlossen um
-	$this->RegisterVariableInteger('WinClose', 'Fenster geschlossen','~UnixTimestamp',13);
+	$this->RegisterVariableInteger('WinClose', 'Fenster geschlossen','',13);
 	    
 	//Zeit Fenster Offen
-	$this->RegisterVariableInteger('TimeWinOpen', 'Zeit Fenster geöffnet','time.min',14);
+	$this->RegisterVariableInteger('TimeWinOpen', 'Zeit Fenster geöffnet','',14);
 	    
         //Gelüftet
 	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','',15);   
