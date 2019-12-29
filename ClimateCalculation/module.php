@@ -151,7 +151,7 @@ class ClimateCalculation extends IPSModule
 	 if ($this->ReadPropertyInteger('CreateWinOpen') == true)
 	 {
 	 	$this->RegisterVariableInteger('Offen', 'Offen',"",16);
-	 }
+	 };
 	 $this->RegisterVariableInteger('Geschlossen', 'Geschlossen',"",17);   
 	    
     	// Trigger Fenster
