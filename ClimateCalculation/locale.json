@@ -28,10 +28,6 @@
 	"Create variable TF-80?": "Soll die Variable TF-80 angelegt werden?",  
 	"Create variable mould?": "Soll die Variable Schimmelgefahr angelegt werden?",  
 	"Create variable AW-Value?": "Soll die Variable AW-Wert angelegt werden?",  
-	//"Create variable ventilate?": "Soll die Variable Gelüftet angelegt werden?",
-	//"Create variable window open?": "Soll die Variable Fenster geöffnet angelegt werden?",    
-	//"Create variable window close?": "Soll die Variable Fenster geschlossen angelegt werden?", 
-	//"Create variable time window open?": "Soll die Variable Zeit Fenster geöffnet angelegt werden?",  
         "Calculate values!": "Werte berechnen!",
         "CALCULATE": "BERECHNEN"
     }
