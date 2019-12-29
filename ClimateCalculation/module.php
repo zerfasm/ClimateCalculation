@@ -99,7 +99,7 @@ class ClimateCalculation extends IPSModule
             [0, 'Nicht gelüftet', 'Window-0', 0xFF0000],
             [1, 'Gelüftet', 'Window-100', 0x00FF00],
         ];
-        $this->RegisterProfile(vtBoolean, 'SCHB.Ventilate', 'Window', '', '', 0, 0, 0, 0, $association);
+        $this->RegisterProfile(vtBoolean, 'SCHB.Ventilated', 'Window', '', '', 0, 0, 0, 0, $association);
         
         // Ergebnis & Hinweis & Differenz
         $this->MaintainVariable('Hint', 'Hinweis', vtBoolean, 'SCHB.AirOrNot', 1, true);
@@ -148,7 +148,7 @@ class ClimateCalculation extends IPSModule
         //Gelüftet
         //$create = $this->ReadPropertyBoolean('CreateAir');
         //$this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create);
-	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','SCHB.Ventilate',15);   
+	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','SCHB.Ventilated',15);   
 	       
     	// Trigger Fenster
 	if ($this->ReadPropertyInteger('WindowValue') > 0)
