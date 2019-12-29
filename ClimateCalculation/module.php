@@ -148,14 +148,14 @@ class ClimateCalculation extends IPSModule
         $this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create);
 	    
 	//Test
-	 If ($this->ReadPropertyInteger('CreateWinOpen') == true)
+	 if ($this->ReadPropertyInteger('CreateWinOpen') == true)
 	 {
 	 	$this->RegisterVariableInteger('Offen', 'Offen',"",16);
 	 }
 	 $this->RegisterVariableInteger('Geschlossen', 'Geschlossen',"",17);   
 	    
     	// Trigger Fenster
-	If ($this->ReadPropertyInteger('WindowValue') > 0)
+	if ($this->ReadPropertyInteger('WindowValue') > 0)
 	{
 		$this->RegisterTriggerWindow("Fenster", "TriggerFenster", 0, $this->InstanceID, 0,"SCHB_Update(\$_IPS['TARGET']);");
 	};
