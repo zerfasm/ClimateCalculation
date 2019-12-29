@@ -31,7 +31,10 @@ class ClimateCalculation extends IPSModule
         $this->RegisterPropertyBoolean('CreateAir', false);
 	$this->RegisterPropertyInteger('AirTime', 15);
         $this->RegisterPropertyInteger('DiffLimit', 5);
-	    
+	$this->RegisterPropertyInteger('WinOpen', 0);
+	$this->RegisterPropertyInteger('WinClose', 0);  
+	$this->RegisterPropertyInteger('TimeWinOpen', 0);    
+		
 	// Alexa variables   
         $this->RegisterPropertyBoolean('TTSAlexa', false);
         $this->RegisterPropertyString('AlexaID', "");
