@@ -133,7 +133,8 @@ class ClimateCalculation extends IPSModule
         
 	//Geöffnet um
         $create = $this->ReadPropertyBoolean('CreateWinOpen');
-        $this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '~UnixTimestamp', 12, $create); 
+        //$this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '~UnixTimestamp', 12, $create); 
+	$this->RegisterVariableInteger('WinOpen', 'Fenster geöffnet', '~UnixTimestamp', 12, $create); 
 	    
 	//Geschlossen um
         $create = $this->ReadPropertyBoolean('CreateWinClose');
