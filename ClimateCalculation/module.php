@@ -340,9 +340,10 @@ class ClimateCalculation extends IPSModule
         $nr = $this->ReadPropertyString('NameRoom');
         $AID = $this->ReadPropertyString('AlexaID');   
         $AV = $this->ReadPropertyInteger('AlexaVolume'); 
-	$winopen = $this->ReadPropertyInteger('WinOpen'); 
-	$winclose = $this->ReadPropertyInteger('WinClose');
-	$timewinopen = $this->ReadPropertyInteger('TimeWinOpen');
+	    
+	$winopen = $this->GetValue('WinOpen'); 
+	$winclose = $this->GetValue('WinClose');
+	$timewinopen = $this->GetValue('TimeWinOpen');
     
 	$wv = $this->ReadPropertyInteger('WindowValue');
 	if ($wv != 0) 
