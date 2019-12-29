@@ -376,8 +376,6 @@ class ClimateCalculation extends IPSModule
 		{	
 			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			
-			if ($winopen > 0)
-			{
 				$timediff = ($winclose - $winopen)/60;
 				$this->SetValue('TimeWinOpen',$timediff);
 
@@ -393,7 +391,6 @@ class ClimateCalculation extends IPSModule
 						EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 					}
 				}
-			}
         	} 
 	} else 
 	{
