@@ -134,11 +134,10 @@ class ClimateCalculation extends IPSModule
 	//Geöffnet um
         $create = $this->ReadPropertyBoolean('CreateWinOpen');
         //$this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '~UnixTimestamp', 12, $create); 
-	$this->RegisterVariableInteger('WinOpen', 'Fenster geöffnet', '~UnixTimestamp', 12, $create); 
 	    
 	//Geschlossen um
         $create = $this->ReadPropertyBoolean('CreateWinClose');
-        $this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '~UnixTimestamp', 13, $create);
+        //$this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '~UnixTimestamp', 13, $create);
 	    
 	//Zeit Fenster Offen
         $create = $this->ReadPropertyBoolean('CreateTimeWinOpen');
@@ -149,7 +148,10 @@ class ClimateCalculation extends IPSModule
         $this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create);
 	    
 	//Test
-	 $this->RegisterVariableInteger('Offen', 'Offen',"",16);
+	 If ($this->ReadPropertyInteger('CreateWinOpen') == true)
+	 {
+	 	$this->RegisterVariableInteger('Offen', 'Offen',"",16);
+	 }
 	 $this->RegisterVariableInteger('Geschlossen', 'Geschlossen',"",17);   
 	    
     	// Trigger Fenster
