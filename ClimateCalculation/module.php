@@ -397,7 +397,7 @@ class ClimateCalculation extends IPSModule
 				$timediff = ($winclose - $winopen)/60;
 				SetValue($timewinopenID,$timediff);
 
-				/*If ($timewinopen >= 900)
+				If ($timewinopen >= 15)
 				{
 					// Status gelüftet setzen
 					$update = $this->ReadPropertyBoolean('CreateAir');
@@ -409,10 +409,10 @@ class ClimateCalculation extends IPSModule
 					//TTS Alexa Echo Remote Modul   
 					if ($tts == true)
 					{
-					EchoRemote_SetVolume($AID, $AV);
-					EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
+						EchoRemote_SetVolume($AID, $AV);
+						EchoRemote_TextToSpeech($AID, "Lüften $nr benenden"); 
 					}
-				}*/
+				}
 			}
         	} 
 	} else 
