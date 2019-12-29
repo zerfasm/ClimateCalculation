@@ -341,10 +341,6 @@ class ClimateCalculation extends IPSModule
         $AID = $this->ReadPropertyString('AlexaID');   
         $AV = $this->ReadPropertyInteger('AlexaVolume'); 
 	    
-	$winopen = $this->GetValue('WinOpen'); 
-	$winclose = $this->GetValue('WinClose');
-	$timewinopen = $this->GetValue('TimeWinOpen');
-    
 	$wv = $this->ReadPropertyInteger('WindowValue');
 	if ($wv != 0) 
 	{
@@ -376,7 +372,11 @@ class ClimateCalculation extends IPSModule
 		{	
 			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			
-				$timediff = (($this->ReadPropertyInteger('WinClose')) - ($this->ReadPropertyInteger('WinOpen')));
+			$winopen = $this->GetValue('WinOpen'); 
+			$winclose = $this->GetValue('WinClose');
+			$timewinopen = $this->GetValue('TimeWinOpen');
+			
+				$timediff = ($winclose - $winopen);
 				$this->SetValue('TimeWinOpen',$timediff);
 
 				if ($timewinopen >= 15)
