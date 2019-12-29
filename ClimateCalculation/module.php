@@ -149,14 +149,7 @@ class ClimateCalculation extends IPSModule
         //$create = $this->ReadPropertyBoolean('CreateAir');
         //$this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create);
 	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','SCHB.Ventilate',15);   
-	    
-	//Test
-	 if ($this->ReadPropertyBoolean('CreateWinOpen') == true)
-	 {
-	 	$this->RegisterVariableInteger('Offen', 'Offen',"",16);
-	 };
-	 $this->RegisterVariableInteger('Geschlossen', 'Geschlossen',"",17);   
-	    
+	       
     	// Trigger Fenster
 	if ($this->ReadPropertyInteger('WindowValue') > 0)
 	{
