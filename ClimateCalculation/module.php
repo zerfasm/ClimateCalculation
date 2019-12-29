@@ -372,19 +372,15 @@ class ClimateCalculation extends IPSModule
 		{	
 			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			
-			if ($this->ReadPropertyInteger('WinOpen') > 0)
+			if (GetValue($this->ReadPropertyInteger('WinOpen')) > 0)
 			{
-				$timediff = (($this->ReadPropertyInteger('WinClose')) - ($this->ReadPropertyInteger('WinOpen')))/60;
+				$timediff = (GetValue($this->ReadPropertyInteger('WinClose')) - GetValue($this->ReadPropertyInteger('WinOpen')))/60;
 				$this->SetValue('TimeWinOpen',$timediff);
 
-				if ($timewinopen >= 15)
+				if (GetValue($this->ReadPropertyInteger('TimeWinOpen')) >= 15)
 				{
 					// Status gelüftet setzen
-					$update = $this->ReadPropertyBoolean('CreateAir');
-					if ($update == true) 
-					{
-						$this->SetValue('Ventilate', 1);
-					}
+					$this->SetValue('Ventilate', true);
 
 					//TTS Alexa Echo Remote Modul   
 					if ($tts == true)
