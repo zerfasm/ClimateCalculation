@@ -25,10 +25,6 @@ class ClimateCalculation extends IPSModule
         
          // Window variables
         $this->RegisterPropertyInteger('WindowValue', 0);
-	//$this->RegisterPropertyBoolean('CreateWinOpen', false);
-        //$this->RegisterPropertyBoolean('CreateWinClose', false);	    
-	//$this->RegisterPropertyBoolean('CreateTimeWinOpen', false);   
-        //$this->RegisterPropertyBoolean('CreateAir', false);
 	$this->RegisterPropertyInteger('AirTime', 15);
         $this->RegisterPropertyInteger('DiffLimit', 5);
 	$this->RegisterPropertyInteger('WinOpen', 0);
@@ -94,7 +90,7 @@ class ClimateCalculation extends IPSModule
         ];
         $this->RegisterProfile(vtFloat, 'SCHB.Difference', 'Window', '', '', 0, 0, 0, 2, $association);
         
-        // Profile "SCHB.Ventilate"
+        // Profile "SCHB.Ventilated"
         $association = [
             [0, 'Nicht gelüftet', 'Window-0', 0xFF0000],
             [1, 'Gelüftet', 'Window-100', 0x00FF00],
@@ -131,23 +127,15 @@ class ClimateCalculation extends IPSModule
         $this->MaintainVariable('Mould', 'Schimmelgefahr', vtInteger, 'SCHB.Schimmelgefahr', 11, $create); 
         
 	//Geöffnet um
-        //$create = $this->ReadPropertyBoolean('CreateWinOpen');
-        //$this->MaintainVariable('WinOpen', 'Fenster geöffnet', vtInteger, '~UnixTimestamp', 12, $create);
 	$this->RegisterVariableInteger('WinOpen', 'Fenster geöffnet','~UnixTimestamp',12);
 	    
 	//Geschlossen um
-        //$create = $this->ReadPropertyBoolean('CreateWinClose');
-        //$this->MaintainVariable('WinClose', 'Fenster geschlossen', vtInteger, '~UnixTimestamp', 13, $create);
 	$this->RegisterVariableInteger('WinClose', 'Fenster geschlossen','~UnixTimestamp',13);
 	    
 	//Zeit Fenster Offen
-        //$create = $this->ReadPropertyBoolean('CreateTimeWinOpen');
-        //$this->MaintainVariable('TimeWinOpen', 'Zeit Fenster geöffnet', vtInteger, 'time.min', 14, $create);  
 	$this->RegisterVariableInteger('TimeWinOpen', 'Zeit Fenster geöffnet','time.min',14);
 	    
         //Gelüftet
-        //$create = $this->ReadPropertyBoolean('CreateAir');
-        //$this->MaintainVariable('Ventilate', 'Gelüftet', vtInteger, 'SCHB.Ventilate', 15, $create);
 	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','SCHB.Ventilated',15);   
 	       
     	// Trigger Fenster
