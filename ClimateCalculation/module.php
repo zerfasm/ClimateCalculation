@@ -88,14 +88,14 @@ class ClimateCalculation extends IPSModule
             [0.01, '+%0.2f %%', 'Window-100', 0xffa500],
             [10, '+%0.2f %%', 'Window-100', 0xFF0000],
         ];
-        $this->RegisterProfile(vtFloat, 'SCHB.Difference', 'Window', '', '', 0, 0, 0, 2, $association);
+        $this->RegisterProfile(vtFloat, 'SCHB.Difference', 'Window', 'Information', '', 0, 0, 0, 2, $association);
         
         // Profile "SCHB.Ventilate"
         $association = [
             [0, 'Nicht gelüftet', 'Window-0', 0xFF0000],
             [1, 'Gelüftet', 'Window-100', 0x00FF00],
         ];
-        $this->RegisterProfile(vtInteger, 'SCHB.Ventilate', 'Window', '', '', 0, 0, 0, 0, $association);
+        $this->RegisterProfile(vtInteger, 'SCHB.Ventilate', 'Window', 'Information', '', 0, 0, 0, 0, $association);
         
         // Ergebnis & Hinweis & Differenz
         $this->MaintainVariable('Hint', 'Hinweis', vtBoolean, 'SCHB.AirOrNot', 1, true);
