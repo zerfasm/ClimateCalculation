@@ -385,8 +385,8 @@ class ClimateCalculation extends IPSModule
 			
 			if ($winopen > 0)
 			{
-				//$winopenID = $this->GetIDForIdent('WinOpen'); 
-				//$winopen = GetValue($winopenID);
+				$winopenID = $this->GetIDForIdent('WinOpen'); 
+				$winopen = GetValue($winopenID);
 
 				$wincloseID = $this->GetIDForIdent('WinClose'); 
 				$winclose = GetValue($wincloseID);
