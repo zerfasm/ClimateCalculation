@@ -136,7 +136,7 @@ class ClimateCalculation extends IPSModule
 	$this->RegisterVariableInteger('TimeWinOpen', 'Zeit Fenster geöffnet','time.min',14);
 	    
         //Gelüftet
-	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','SCHB.Ventilated',15);   
+	$this->RegisterVariableBoolean('Ventilate', 'Gelüftet','',15);   
 	       
     	// Trigger Fenster
 	if ($this->ReadPropertyInteger('WindowValue') > 0)
@@ -339,7 +339,10 @@ class ClimateCalculation extends IPSModule
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
         $AID = $this->ReadPropertyString('AlexaID');   
-        $AV = $this->ReadPropertyInteger('AlexaVolume'); 	      
+        $AV = $this->ReadPropertyInteger('AlexaVolume'); 
+	$winopen = $this->ReadPropertyInteger('WinOpen'); 
+	$winclose = $this->ReadPropertyInteger('WinClose');
+	$timewinopen = $this->ReadPropertyInteger('TimeWinOpen');
     
 	$wv = $this->ReadPropertyInteger('WindowValue');
 	if ($wv != 0) 
@@ -372,12 +375,12 @@ class ClimateCalculation extends IPSModule
 		{	
 			$this->SetValue('WinClose', IPS_GetVariable($this->ReadPropertyInteger('WindowValue'))["VariableChanged"]);
 			
-			if (GetValue($this->ReadPropertyInteger('WinOpen')) > 0)
+			if ($winopen > 0)
 			{
-				$timediff = (GetValue($this->ReadPropertyInteger('WinClose')) - GetValue($this->ReadPropertyInteger('WinOpen')))/60;
+				$timediff = ($winclose - $winopen)/60;
 				$this->SetValue('TimeWinOpen',$timediff);
 
-				if (GetValue($this->ReadPropertyInteger('TimeWinOpen')) >= 15)
+				if ($timewinopen >= 15)
 				{
 					// Status gelüftet setzen
 					$this->SetValue('Ventilate', true);
