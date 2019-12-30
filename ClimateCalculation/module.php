@@ -377,11 +377,13 @@ class ClimateCalculation extends IPSModule
 				$winopen = $this->GetValue('WinOpen'); 
 				$winclose = $this->GetValue('WinClose');
 				$timewinopen = $this->GetValue('TimeWinOpen');
+				$airtime = $this->GetValue('AirTime');
 			
 				$timediff = (($winclose - $winopen)/60);
 				$this->SetValue('TimeWinOpen',$timediff);
 
-				if ($timewinopen >= 15)
+				//if ($timewinopen >= 15)
+				if ($timewinopen >= $airtime)
 				{
 					// Status gelüftet setzen
 					$this->SetValue('Ventilate', true);
