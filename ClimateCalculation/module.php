@@ -377,7 +377,7 @@ class ClimateCalculation extends IPSModule
 				$winopen = $this->GetValue('WinOpen'); 
 				$winclose = $this->GetValue('WinClose');
 				$timewinopen = $this->GetValue('TimeWinOpen');
-				$airtime = $this->GetValue('AirTime');
+				$airtime = $this->ReadPropertyInteger('AirTime');
 			
 				$timediff = (($winclose - $winopen)/60);
 				$this->SetValue('TimeWinOpen',$timediff);
