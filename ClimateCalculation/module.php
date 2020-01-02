@@ -26,15 +26,11 @@ class ClimateCalculation extends IPSModule
          // Window variables
         $this->RegisterPropertyInteger('WindowValue', 0);
 	$this->RegisterPropertyInteger('AirTime', 15);
-        $this->RegisterPropertyInteger('DiffLimit', 5);
-	//$this->RegisterPropertyInteger('WinOpen', 0);
-	//$this->RegisterPropertyInteger('WinClose', 0);  
-	//$this->RegisterPropertyInteger('TimeWinOpen', 0);
-	//$this->RegisterPropertyBoolean('Ventilate', false);    
+        $this->RegisterPropertyInteger('DiffLimit', 5);  
 		
 	// Alexa variables   
         $this->RegisterPropertyBoolean('TTSAlexa', false);
-        $this->RegisterPropertyString('AlexaID', "");
+        $this->RegisterPropertyInteger('AlexaID', null);
 	$this->RegisterPropertyInteger('AlexaVolume', 40);
         $this->RegisterPropertyString('NameRoom', "");
         
@@ -338,7 +334,7 @@ class ClimateCalculation extends IPSModule
         $dl = $this->ReadPropertyInteger('DiffLimit');
         $tts = $this->ReadPropertyBoolean('TTSAlexa');
         $nr = $this->ReadPropertyString('NameRoom');
-        $AID = $this->ReadPropertyString('AlexaID');   
+        $AID = $this->ReadPropertyInteger('AlexaID');   
         $AV = $this->ReadPropertyInteger('AlexaVolume'); 
 	    
 	$wv = $this->ReadPropertyInteger('WindowValue');
