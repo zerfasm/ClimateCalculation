@@ -38,7 +38,7 @@
 	{"type": "ValidationTextBox", "name": "AirTime", "caption": "Air Time [min]:" },       
 	{"type": "CheckBox", "name": "TTSAlexa", "caption": "Use TTS?" },
 	{"type": "ValidationTextBox", "name": "NameRoom", "caption": "Name Room:" },
-	{"type": "ValidationTextBox", "name": "AlexaID", "caption": "ID Alexa:" }, 
+	{"type": "SelectInstance", "name": "AlexaID", "caption": "ID Alexa:" }, 
 	{"type": "ValidationTextBox", "name": "AlexaVolume", "caption": "Volume Alexa:" },    
 	{"type": "Select", "name": "DiffLimit", "caption": "Limit difference for state ventilate:",
           "options": [
